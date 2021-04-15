@@ -82,8 +82,7 @@
   "lint-staged": {
     "src/*.{js,jsx,mjs,ts,tsx}": [
       "node_modules/.bin/prettier --write",
-      "node_modules/.bin/eslint --fix",
-      "git add"
+      "eslint --config .eslintrc.js"
     ],
     "src/*.{css,scss,less,json,html,md,markdown}": [
       "node_modules/.bin/prettier --write",

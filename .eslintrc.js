@@ -1,4 +1,4 @@
-// eslint：javascript代码检测工具，使用espree解析器 
+// eslint：javascript代码检测工具，使用espree解析器
 // @typescript-eslint/parser：将 TypeScript 转换为 ESTree，使 eslint 可以识别
 // @typescript-eslint/eslint-plugin：只是一个可以打开或关闭的规则列表
 
@@ -35,8 +35,7 @@ module.exports = {
   plugins: [
     'react',
     'react-hooks',
-    'prettier'
-    // '@typescript-eslint'
+    'prettier',
   ],
   settings: {
     react: {
