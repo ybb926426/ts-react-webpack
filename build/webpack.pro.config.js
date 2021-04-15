@@ -9,8 +9,11 @@ const paths = require('./paths');
 // fs.emptyDirSync(paths.appBuildDist);
 module.exports = {
   plugins: [
+    // 清除打包文件
     new CleanWebpackPlugin(),
+    // 用于优化\最小化CSS资产
     new OptimizeCSSAssetsPlugin(),
+    // 打包进度
     new ProgressBarPlugin({
       format:
         `${chalk.green.bold("build[:bar]")} ` +

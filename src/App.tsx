@@ -3,6 +3,11 @@ import logo from './logo.svg';
 import './App.less';
 
 function App() {
+  const app = '12121';
+  let myName = 'Tom';
+  console.log(`My name is ${myNane}`);
+  console.log(`My name is ${myName.toStrng()}`);
+  console.log(`My name is ${myName}`)
   return (
     <div className="App">
       <header className="App-header">

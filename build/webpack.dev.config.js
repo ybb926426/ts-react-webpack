@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const paths = require('./paths');
 
 module.exports = {
-  // devtool: 'cheap-module-eval-source-map',
   devServer: {
     port: 8002,
     open: true,
