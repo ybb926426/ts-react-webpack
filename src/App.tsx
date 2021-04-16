@@ -5,10 +5,9 @@ import './App.less';
 function App() {
   const app = '12121';
   let bbb = '1212';
+  let bbb = '1212';
   let myName = 'Tom';
   console.log(`My name is ${myNane}`);
-  console.log(`My name is ${myName.toStrng()}`);
-  console.log(`My name is ${myName.toStrng()}`);
   console.log(`My name is ${myName.toStrng()}`);
   console.log(`My name is ${myName}`)
   return (
