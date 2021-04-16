@@ -15,13 +15,28 @@ const BasicLayout = () => {
   const toogle = () => {
     setCollapsed(!collapsed);
   }
+  const getHiddenDomStyle = () => {
+    const width = `${ collapsed ? 80 : 200 }px`;
+    return {
+      width: width,
+      overflow: 'hidden',
+      flex: `0 0 ${width}`,
+      maxWidth: width,
+      minWidth: width,
+      transition: 'all 0.2s',
+    };
+  }
   return (
     <div className="basicLayout">
-      <Layout style={{height: 'calc(100vh - 60px)'}}>
-        <Sider collapsible collapsed={collapsed} theme="light">
+      {/* style={{height: 'calc(100vh - 60px)'}} */}
+      <Layout>
+        <div
+          style={getHiddenDomStyle()}
+        ></div>
+        <Sider collapsible collapsed={collapsed} theme="light" className="ant-sider-fixed">
           <SiderMenu />
         </Sider>
-        <Layout>
+        <Layout className="container">
           <Header className="my-header" style={{padding: 0}}>
             {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger middle-icon',

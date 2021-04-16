@@ -2,9 +2,9 @@ import React, { Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import PageLoading from '@/components/layout/PageLoading';
 
-const DashBoard = lazy(() => import(/* webpackChunkName: "MarketAnalysis" */'@/views/dashboard/index'))
-const Test = lazy(() => import(/* webpackChunkName: "MarketAnalysis" */'@/views/test/index'))
-const ErrorPage = lazy(() => import(/* webpackChunkName: "MarketAnalysis" */'@/components/layout/ErrorPage'))
+const DashBoard = lazy(() => import(/* webpackChunkName: "DashBoard" */'@/views/dashboard/index'))
+const Test = lazy(() => import(/* webpackChunkName: "Test" */'@/views/test/index'))
+const ErrorPage = lazy(() => import(/* webpackChunkName: "ErrorPage" */'@/components/layout/ErrorPage'))
 
 const BaseRouter = () => {
   return (

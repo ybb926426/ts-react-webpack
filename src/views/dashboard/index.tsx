@@ -1,148 +1,115 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, Row, Col } from 'antd';
+import { Analysis, MiniArea } from './components';
+import { PieArea } from '@/components/Charts';
 
-import './marketAnalysis.less';
-
-class MarketAnalysis extends Component {
+class DashBoard extends React.Component {
+  componentDidMount() {}
 
   render() {
-    const dataList = [
-      {
-        zh: '访问人数',
-        dataInfo: {
-          day: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          month: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          week: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          ratio: "",
-          refdate: "20200623",
-          value: "0",
-        }
-      },
-      {
-        zh: '新访问人数',
-        dataInfo: {
-          day: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          month: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          week: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          ratio: "",
-          refdate: "20200623",
-          value: "0",
-        }
-      },
-      {
-        zh: '总添加人数',
-        dataInfo: {
-          day: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          month: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          week: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          ratio: "",
-          refdate: "20200623",
-          value: "0",
-        }
-      },
-      {
-        zh: '新添加人数',
-        dataInfo: {
-          day: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          month: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          week: {
-            abs: "-1",
-            ratio: "-1.000000"
-          },
-          ratio: "",
-          refdate: "20200623",
-          value: "0",
-        }
-      }
-    ]
     return (
       <>
-        <Card title="今日流量" style={{ marginBottom: 24 }}>
-          <div className="data_overview_list">
-            {
-              dataList.map((value, index) => {
-                return <div key={index} className="data_overview_item">
-                  <p className="data_overview_title">{value.zh}</p>
-                  <p className="data_overview_desc">{value.dataInfo.value}</p>
-                  <ul className="data_overview_percent">
-                    <li className="data_overview_percent_item">
-                      <div className="data_overview_percent_item_inner">
-                        <label>日</label>
-                        <p className="tips_global">
-                          <span className="mini_tips warn">{value.dataInfo.value}</span>
-                        </p>
-                      </div>
-                    </li>
-                    <li className="data_overview_percent_item">
-                      <div className="data_overview_percent_item_inner">
-                        <label>周</label>
-                        <p className="tips_global">
-                          <span className="mini_tips warn">{value.dataInfo.value}</span>
-                        </p>
-                      </div>
-                    </li>
-                    <li className="data_overview_percent_item">
-                      <div className="data_overview_percent_item_inner">
-                        <label>月</label>
-                        <p className="tips_global">
-                          <span className="mini_tips warn">{value.dataInfo.value}</span>
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              })
-            }
-          </div>
-        </Card>
         <Row gutter={24}>
-          <Col xl={12} lg={24} sm={24} xs={24} style={{ marginBottom: 24 }}>
-            <Card title="趋势图">
-              MarketAnalysis
+          <Col lg={12} md={24}>
+            <Card
+              bordered={false}
+              bodyStyle={{
+                padding: '24px 36px 24px 0',
+                margin: '0 0 24px 0',
+              }}>
+              <Analysis />
             </Card>
           </Col>
-          <Col xl={12} lg={24} sm={24} xs={24} style={{ marginBottom: 24 }}>
-            <Card title="Top10入口页面">
-              MarketAnalysis
+          <Col lg={12} md={24}>
+            <Card
+              bordered={false}
+              bodyStyle={{
+                padding: '24px 36px 24px 0',
+                margin: '0 0 24px 0',
+              }}>
+              `5`
+            </Card>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col lg={8} md={24}>
+            <Card
+              title="转化率"
+              style={{ height: '360px' }}
+              bordered={false}
+              bodyStyle={{
+                padding: '24px 36px 24px 0',
+                margin: '0 0 24px 0',
+              }}>
+              <MiniArea />
+            </Card>
+          </Col>
+          <Col lg={8} md={24}>
+            <Card
+              title="访问来源"
+              style={{ height: '360px' }}
+              bordered={false}
+              bodyStyle={{
+                padding: '24px 36px 24px 0',
+                margin: '0 0 24px 0',
+              }}>
+              <MiniArea />
+            </Card>
+          </Col>
+          <Col lg={8} md={24}>
+            <Card
+              title="成交占比"
+              style={{ height: '360px' }}
+              bordered={false}
+              bodyStyle={{
+                padding: '24px 36px 24px 0',
+                margin: '0 0 24px 0',
+              }}>
+              <PieArea />
+            </Card>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col lg={8} md={24}>
+            <Card
+              title="转化率"
+              style={{ height: '360px' }}
+              bordered={false}
+              bodyStyle={{
+                padding: '24px 36px 24px 0',
+                margin: '0 0 24px 0',
+              }}>
+              <MiniArea />
+            </Card>
+          </Col>
+          <Col lg={8} md={24}>
+            <Card
+              title="访问来源"
+              style={{ height: '360px' }}
+              bordered={false}
+              bodyStyle={{
+                padding: '24px 36px 24px 0',
+                margin: '0 0 24px 0',
+              }}>
+              <MiniArea />
+            </Card>
+          </Col>
+          <Col lg={8} md={24}>
+            <Card
+              title="成交占比"
+              style={{ height: '360px' }}
+              bordered={false}
+              bodyStyle={{
+                padding: '24px 36px 24px 0',
+                margin: '0 0 24px 0',
+              }}>
+              <PieArea />
             </Card>
           </Col>
         </Row>
       </>
-    )
+    );
   }
 }
 
-export default MarketAnalysis;
+export default DashBoard;
