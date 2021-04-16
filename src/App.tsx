@@ -9,6 +9,7 @@ function App() {
   console.log(`My name is ${myNane}`);
   console.log(`My name is ${myName.toStrng()}`);
   console.log(`My name is ${myName.toStrng()}`);
+  console.log(`My name is ${myName.toStrng()}`);
   console.log(`My name is ${myName}`)
   return (
     <div className="App">
