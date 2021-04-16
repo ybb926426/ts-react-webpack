@@ -13,7 +13,7 @@ module.exports = {
     compress: true,
     // Silence WebpackDevServer's own logs since they're generally not useful.
     // It will still show compile warnings and errors with this setting.
-    
+
     // publicPath: paths.publicUrlOrPath.slice(0, -1),
     // contentBase: paths.appPublic,
     static: {
@@ -36,10 +36,12 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin({}),
     new ESLintPlugin({
       fix: false, // 启用ESLint自动修复功能
-      extensions: ['js', 'jsx'],
+      extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
       context: paths.appSrc, // 文件根目录
       exclude: '/node_modules/',// 指定要排除的文件/目录
       cache: true, //缓存
+      // ESLint class options
+      cwd: paths.appPath,
     })
   ]
 }

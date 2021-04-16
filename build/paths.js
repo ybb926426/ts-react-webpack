@@ -31,6 +31,7 @@ module.exports = {
   appIndexJs: resolveModule(resolveApp, 'src/index'),
   appHtml: resolveApp('public/index.html'),
   appSrc: resolveApp('src'),
+  appPath: resolveApp('.'),
   appPublic: resolveApp('public'),
   appBuildDist: resolveApp('dist'), // 打包路径
   appPackageJson: resolveApp('package.json'),

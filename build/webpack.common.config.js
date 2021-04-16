@@ -122,31 +122,50 @@ module.exports = (webpackEnv) => {
     },
     module: {
       rules: [
+        // {
+        //   test: /\.tsx?$/i,
+        //   loader: 'awesome-typescript-loader',
+        //   exclude: /node_modules/,
+        //   options: {
+        //     getCustomTransformers: () => ({
+        //       before: [
+        //         tsImportPluginFactory([{
+        //           libraryName: 'antd',
+        //           libraryDirectory: 'lib',
+        //           style: 'css'
+        //         }])
+        //       ]
+        //     })
+        //   }
+        // },
+        // {
+        //   test: /\.(js|mjs|jsx)$/,
+        //   exclude: /node_modules/,
+        //   loader: require.resolve('babel-loader'),
+        //   options: {
+        //     plugins: [
+        //       isEnvDevelopment &&
+        //       require.resolve('react-refresh/babel')
+        //     ].filter(Boolean)
+        //   }
+        // },
+
         {
-          test: /\.tsx?$/i,
-          loader: 'awesome-typescript-loader',
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
           exclude: /node_modules/,
-          options: {
-            getCustomTransformers: () => ({
-              before: [
-                tsImportPluginFactory([{
-                  libraryName: 'antd',
-                  libraryDirectory: 'lib',
-                  style: 'css'
-                }])
-              ]
-            })
-          }
-        },
-        {
-          test: /\.(js|mjs|jsx)$/,
-          exclude: /node_modules/,
+          include: paths.appSrc,
           loader: require.resolve('babel-loader'),
           options: {
-            plugins: [
-              isEnvDevelopment &&
-              require.resolve('react-refresh/babel')
-            ].filter(Boolean)
+            // presets: [
+            //   [
+            //     require.resolve('babel-preset-react-app'),
+            //   ],
+            // ],
+            // plugins: [
+            //   require.resolve('babel-plugin-named-asset-import'),
+            //   isEnvDevelopment &&
+            //   require.resolve('react-refresh/babel')
+            // ].filter(Boolean)
           }
         },
         {
@@ -389,7 +408,7 @@ module.exports = (webpackEnv) => {
             priority: -20,
             chunks: 'initial',
             // 如果一个模块已经被打包过了,那么再打包时就忽略这个上模块
-            reuseExistingChunk: true 
+            reuseExistingChunk: true
           },
           //涉及react的模块
           react: {
@@ -400,8 +419,8 @@ module.exports = (webpackEnv) => {
         }
       }
     },
-    // stats: {
-    //   all: false, warnings: true, errors: true
-    // }
+    stats: {
+      all: false, warnings: true, errors: true
+    }
   }
 }
