@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "antd";
 import logo from "./logo.svg";
 import "./App.less";
 
@@ -14,6 +15,7 @@ function App() {
   // console.log(`My name is ${myName}`)
   return (
     <div className="App">
+      <Button>店家</Button>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

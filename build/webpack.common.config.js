@@ -10,6 +10,7 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 const postcssNormalize = require('postcss-normalize');
+const modifyVars = require('./theme');
 
 
 const cssRegex = /\.css$/;
@@ -26,7 +27,7 @@ module.exports = (webpackEnv) => {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
 
-  const getStyleLoaders = (cssOptions, preProcessor) => {
+  const getStyleLoaders = (cssOptions, preProcessor, otherOptions) => {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
@@ -68,14 +69,13 @@ module.exports = (webpackEnv) => {
           loader: require.resolve(preProcessor),
           options: {
             sourceMap: true,
+            ...otherOptions
           },
         }
       );
     }
     return loaders;
   }
-
-  console.log(paths.publicUrlOrPath, 'paths.publicUrlOrPath');
 
   return {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
@@ -198,7 +198,13 @@ module.exports = (webpackEnv) => {
                   importLoaders: 3,
                   sourceMap: isEnvProduction,
                 },
-                'less-loader'
+                'less-loader',
+                {
+                  lessOptions: {
+                    modifyVars,
+                    javascriptEnabled: true
+                  },
+                }
               ),
               sideEffects: true,
             },
@@ -209,7 +215,7 @@ module.exports = (webpackEnv) => {
                   importLoaders: 3,
                   sourceMap: isEnvProduction,
                 },
-                'less-loader'
+                'less-loader',
               ),
             },
             {

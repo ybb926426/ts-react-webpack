@@ -3,8 +3,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const chalk = require('chalk');
-const fs = require('fs-extra');
-const paths = require('./paths');
+// const fs = require('fs-extra');
+// const paths = require('./paths');
 
 // fs.emptyDirSync(paths.appBuildDist);
 module.exports = {

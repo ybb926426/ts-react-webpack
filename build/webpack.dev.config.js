@@ -1,5 +1,4 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
-const path = require('path');
 const webpack = require('webpack');
 const paths = require('./paths');
 
@@ -11,23 +10,12 @@ module.exports = {
     // host: process.env.HOST || '0.0.0.0',
     // Enable gzip compression of generated files.
     compress: true,
-    // Silence WebpackDevServer's own logs since they're generally not useful.
-    // It will still show compile warnings and errors with this setting.
-
-    // publicPath: paths.publicUrlOrPath.slice(0, -1),
-    // contentBase: paths.appPublic,
     static: {
-      // contentBase: [path.resolve(__dirname, 'public')],
-      // publicPath: [path.resolve(__dirname, 'public')]
       publicPath: paths.appPublic,
-      // contentBase: paths.appPublic,
       watch: true,
       staticOptions: {
         contentBase: paths.appPublic,
       }
-      // contentBasePublicPath: paths.publicUrlOrPath,
-      // watchContentBase: true,
-      // clientLogLevel: 'none',
     },
     historyApiFallback: true,
 
