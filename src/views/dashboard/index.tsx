@@ -69,44 +69,6 @@ class DashBoard extends React.Component {
             </Card>
           </Col>
         </Row>
-        <Row gutter={24}>
-          <Col lg={8} md={24}>
-            <Card
-              title="转化率"
-              style={{ height: '360px' }}
-              bordered={false}
-              bodyStyle={{
-                padding: '24px 36px 24px 0',
-                margin: '0 0 24px 0',
-              }}>
-              <MiniArea />
-            </Card>
-          </Col>
-          <Col lg={8} md={24}>
-            <Card
-              title="访问来源"
-              style={{ height: '360px' }}
-              bordered={false}
-              bodyStyle={{
-                padding: '24px 36px 24px 0',
-                margin: '0 0 24px 0',
-              }}>
-              <MiniArea />
-            </Card>
-          </Col>
-          <Col lg={8} md={24}>
-            <Card
-              title="成交占比"
-              style={{ height: '360px' }}
-              bordered={false}
-              bodyStyle={{
-                padding: '24px 36px 24px 0',
-                margin: '0 0 24px 0',
-              }}>
-              <PieArea />
-            </Card>
-          </Col>
-        </Row>
       </>
     );
   }
