@@ -45,5 +45,6 @@ module.exports = {
   // 规则
   rules: {
     'no-unused-vars': 1,
+    'react/prop-types': 0,
   }
 }
