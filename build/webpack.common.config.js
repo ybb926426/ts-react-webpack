@@ -4,6 +4,7 @@ const paths = require('./paths');
 const tsImportPluginFactory = require('ts-import-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const InterpolateHtmlPlugin = require('./utils/InterpolateHtmlPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
@@ -113,6 +114,14 @@ module.exports = (webpackEnv) => {
       globalObject: 'this',
       // 每次构建之前都要清理文件夹
       clean: true,
+    },
+    // 内置 FileSystem Cache 能力加速二次构建
+    cache: {
+      type: 'filesystem',
+      buildDependencies: {
+        config: [__filename],  // 当构建依赖的config文件（通过 require 依赖）内容发生变化时，缓存失效
+      },
+      // name: '',  // 配置以name为隔离，创建不同的缓存文件，如生成PC或mobile不同的配置缓存
     },
     resolve: {
       extensions: ['.js', '.ts', '.tsx'],
@@ -255,6 +264,12 @@ module.exports = (webpackEnv) => {
             //     name: 'static/media/[name].[hash:8].[ext]',
             //   },
             // },
+            // asset/source —— 功能相当于 raw-loader
+            // asset/inline —— 功能相当于 url-loader，若想要设置编码规则，可以在 generator 中设置 dataUrl
+            // asset/resource —— 功能相当于 file-loader。项目中的资源打包统一采用这种方式，得益于团队项目已经
+            // 完全铺开使用了 HTTP2 多路复用的相关特性，我们可以将资源统一处理成文件的形式，
+            // 在获取时让它们能够并行传输，避免在通过编码的形式内置到 js 文件中，而造成资源体积的增大进而影响资源的加载
+            // asset —— 默认会根据文件大小来选择使用哪种类型，当文件小于 8 KB 的时候会使用 asset/inline，否则会使用 asset/resource。也可手动进行阈值的设定
             {
               test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
               type: 'asset',
@@ -269,7 +284,6 @@ module.exports = (webpackEnv) => {
                 filename: 'static/media/[hash:8].[name][ext]',
               },
             },
-
           ]
         }
       ],
@@ -378,7 +392,8 @@ module.exports = (webpackEnv) => {
           test: /\.(ts|tsx|js|jsx)$/,
           extractComments: true,
           parallel: true,
-        })
+        }),
+        new CssMinimizerPlugin(),
       ],
       splitChunks: {
         // 代码分割时默认对异步代码生效，all：所有代码有效 意味着即使在异步和非异步块之间也可以共享块，inital：同步代码有效，async: 异步代码有效
@@ -427,6 +442,7 @@ module.exports = (webpackEnv) => {
     },
     stats: {
       all: false, warnings: true, errors: true
-    }
+    },
+
   }
 }

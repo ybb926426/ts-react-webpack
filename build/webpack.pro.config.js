@@ -1,5 +1,5 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+// const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const chalk = require('chalk');
@@ -12,7 +12,7 @@ module.exports = {
     // 清除打包文件
     new CleanWebpackPlugin(),
     // 用于优化\最小化CSS资产
-    new OptimizeCSSAssetsPlugin(),
+    // new OptimizeCSSAssetsPlugin(),
     // 打包进度
     new ProgressBarPlugin({
       format:
