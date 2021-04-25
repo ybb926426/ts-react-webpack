@@ -33,7 +33,9 @@ module.exports = (webpackEnv) => {
       isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
         loader: MiniCssExtractPlugin.loader,
-        options: {}
+        options: {
+          esModule: false,
+        }
       },
       {
         loader: require.resolve('css-loader'),
@@ -304,6 +306,7 @@ module.exports = (webpackEnv) => {
             inject: true,
             template: paths.appHtml,
             favicon: paths.appPublic + '/favicon.ico',
+            commonUrl: paths.appPublic
             // publicPath: '/'
           },
           isEnvProduction

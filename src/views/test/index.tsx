@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Article, Counter, Counter2, Example, App } from '@/components/Charts/Line';
+// import { Article, Counter, Counter2, Example, App } from '@/components/Charts/Line';
 
 // const ThemeContext = React.createContext({});
 
@@ -35,11 +35,11 @@ class Test extends React.Component {
     return (
       <ColorContext.Provider value='#1890ff'>
         Test Page
-        <Article title="第一篇" content="下一篇" />
+        {/* <Article title="第一篇" content="下一篇" />
         <Counter />
         <Counter2 />
         <Example />
-        <App message="hello App" />
+        <App message="hello App" /> */}
       </ColorContext.Provider>
     );
   }

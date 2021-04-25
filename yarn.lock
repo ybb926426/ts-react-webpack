@@ -5531,9 +5531,9 @@ last-call-webpack-plugin@^3.0.0:
     webpack-sources "^1.1.0"
 
 less-loader@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.npm.taobao.org/less-loader/download/less-loader-8.1.0.tgz?cache=0&sync_timestamp=1617983468127&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fless-loader%2Fdownload%2Fless-loader-8.1.0.tgz#8276adc16bf6576dd80b71563685a2cfe93b0a50"
-  integrity sha1-gnatwWv2V23YC3FWNoWiz+k7ClA=
+  version "8.1.1"
+  resolved "https://registry.npm.taobao.org/less-loader/download/less-loader-8.1.1.tgz#ababe912580457ad00a4318146aac5b53e023f42"
+  integrity sha1-q6vpElgEV60ApDGBRqrFtT4CP0I=
   dependencies:
     klona "^2.0.4"
 

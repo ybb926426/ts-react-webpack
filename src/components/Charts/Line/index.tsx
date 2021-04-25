@@ -525,5 +525,124 @@ const insertSort = (arr: []) => {
       }
     }
     arr[j+1] = value;
-  } 
+  }
+}
+
+
+const bSearch = (arr: [], value) => {
+  let low = 0, high = arr.length - 1;
+  while(low <= high) {
+    let middle = (low + high) / 2;
+    if (arr[middle] == value) {
+      return middle;
+    } else if (arr[middle] < value) {
+      low = middle + 1;
+    } else {
+      high = middle - 1;
+    }
+  }
+  return -1;
+}
+const bSearchF = (arr: Array<any>, value) => {
+  let low = 0, high = arr.length - 1;
+  while (low <= high) {
+    let mid = low + (high - low) / 2;
+    if (arr[mid] > value) {
+      high = mid - 1;
+    } else if (arr[mid] < value) {
+      low = mid + 1;
+    } else {
+      if (mid == 0 || arr[mid - 1] !== value) return mid;
+      high = mid - 1;
+    }
+  }
+}
+const bSearchL = (arr, value) => {
+  let low = 0, high = arr.length - 1;
+  while (low <= high) {
+    let mid = low + (high - low) / 2;
+    if (arr[mid] < value) {
+      low = mid + 1;
+    } else if (arr[mid] > value) {
+      high = mid - 1;
+    } else {
+      if (mid == arr.length - 1 || arr[mid + 1] !== value) return mid;
+      low = mid + 1;
+    }
+  }
+}
+const bSearchFB = (arr: Array<any>, value) => {
+  let low = 0, high = arr.length - 1;
+  while(low <= high) {
+    let mid = low + (high - low) / 2;
+    if (arr[mid] >= value) {
+      if (mid == 0 || arr[mid - 1] < value) return mid;
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }
+}
+
+
+const bSearchD = (arr: Array<any>, value, low, high) => {
+  if (low > high) return -1;
+  let middle = (low+high)/2;
+  if (arr[middle] == value) return middle;
+  if (arr[middle] < value) return bSearchD(arr, value, middle + 1, high);
+  if (arr[middle] > value) return bSearchD(arr, value, low, middle - 1);
+}
+bSearchD([1, 2, 3, 4], 2, 0, 3);
+
+
+const solution = (x) => {
+  let l = 0, r = x, ans = -1;
+  while(l <= r) {
+    let middle = (l + r) / 2;
+    if (middle * middle <= x) {
+      ans = middle;
+      l = middle + 1;
+    } else {
+      r = middle - 1;
+    }
+  }
+  return ans;
+}
+const mySqrt = function(x) {
+  if (x < 2) return x
+  let left = 1, mid, right = Math.floor(x / 2);
+  while (left <= right) {
+     mid = Math.floor(left + (right - left) / 2)
+     if (mid * mid === x) return mid
+     if (mid * mid < x) {
+         left = mid + 1
+     }else {
+         right = mid - 1
+     }
+  }
+  return right
+}
+
+
+const serachM = (arr, target) => {
+  let low = 0, high = arr.length - 1;
+
+  while(low <= high) {
+    let mid = Math.floor(low + (high - low) / 2)
+    if (arr[mid] === target) return mid;
+    if (arr[mid] >= arr[low]) {
+      if (target >= arr[low] && target <= arr[mid]) {
+        high = mid - 1;
+      } else {
+        low = mid + 1;
+      }
+    } else {
+      if (target >= arr[mid] && target <= arr[high]) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+  }
+  return -1;
 }
