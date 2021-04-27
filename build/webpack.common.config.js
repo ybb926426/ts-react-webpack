@@ -299,6 +299,21 @@ module.exports = (webpackEnv) => {
       // }
     },
     plugins: [
+      new webpack.ProgressPlugin(),
+
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: `${paths.appPublic}/logo192.png`
+          },
+          {
+            from: `${paths.appPublic}/logo512.png`
+          },
+          {
+            from: `${paths.appPublic}/manifest.json`
+          },
+        ]
+      }),
       new HtmlWebpackPlugin(
         Object.assign(
           {},
